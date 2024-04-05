@@ -21,10 +21,10 @@ class ViewController: UIViewController {
     @IBOutlet weak var MenuTableView: UITableView!
     
     
-    var data: [MenuData] = [MenuData(name: "A", price: 6000, image: .init(named: "cafemoca")!, category: "커피"),
-                            MenuData(name: "B", price: 5500, image: .init(named: "cafemoca")!, category: "커피"),
-                            MenuData(name: "C", price: 5000, image: .init(named: "cafemoca")!, category: "음료"),
-                            MenuData(name: "D", price: 4500, image: .init(named: "cafemoca")!, category: "음료"),
+    var data: [MenuData] = [MenuData(name: "카페 모카", price: 6000, image: .init(named: "cafemoca")!, category: "커피"),
+                            MenuData(name: "에스프레소", price: 5500, image: .init(named: "espresso")!, category: "커피"),
+                            MenuData(name: "바닐라 라떼", price: 5000, image: .init(named: "banilalatte")!, category: "커피"),
+                            MenuData(name: "오렌지 주스", price: 4500, image: .init(named: "orangejuice")!, category: "음료"),
                             MenuData(name: "E", price: 4000, image: .init(named: "cafemoca")!, category: "디저트")
     ]
     let cellSpacingHeight: CGFloat = 1
@@ -59,7 +59,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
   
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
       if tableView == self.orderTableView{
-          return orderList.count
+          return OrderTableViewCell.orders.count
       } else {
           return data.count
       }
@@ -71,7 +71,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
       
-      if tableView == self.orderTableView{
+      if tableView === self.orderTableView{
           let cell = orderTableView.dequeueReusableCell(withIdentifier: OrderTableViewCell.cellID, for: indexPath) as! OrderTableViewCell
           
           cell.setOrderTableViewCell(indexPath: indexPath)
@@ -93,9 +93,9 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
   
   }
   
-  func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    orderTableView.deselectRow(at: indexPath, animated: true)
-  }
+
+    
+    
   
 }
 
